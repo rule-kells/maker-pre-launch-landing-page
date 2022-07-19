@@ -139,10 +139,11 @@ picture {
 /* ### hero section ###  */
 
 .hero {
+    text-align: center;
     margin: 2.5rem 0 9rem;
 }
 
-.hero .container::before {
+.hero__grid::before {
     content: '';
     inset: 0;
     position: absolute;
@@ -154,24 +155,28 @@ picture {
 
 }
 
-.hero__content {
-    position: relative;
-    max-width: 45.625rem;
-    margin: 0 auto;
-}
-
 .hero__nav .logo {
     margin: 0 auto 21.625rem;
 }
 
-.hero__content img {
-    margin: 0 auto;
+.hero__content {
+    position: relative;
+    max-width: 45.625rem;
+    margin: 0 1.5rem;
+}
+
+.hero__content .fs-heading-xl .accent {
+    color: var(--clr-palette-primary-200);
+
 }
 
 .hero__content p {
     margin: 1.4375rem 0 2rem;
 }
 
+.hero__content img {
+    margin: 0 auto;
+}
 
 /* ### features section ### */
 
@@ -254,7 +259,6 @@ picture {
     font-weight: var(--fw-500);
     vertical-align: middle;
 }
-
 
 .plans__card p {
     margin: 1.1875rem 0 1.625rem;
@@ -387,50 +391,69 @@ input[type='email'] {
 
     .hero {
         overflow: hidden;
-        margin: 3rem 2.4375rem 6.8125rem;
+        padding: 0 1.5rem;
+    }
+
+    .hero__grid {
+        display: grid;
+        max-width: 69.25rem;
+        grid-template-columns: minmax(19.625rem, 1fr) minmax(28.5625rem, 1fr) minmax(19.8125rem, 1fr);
+        grid-template-rows: 22.3125rem;
+        grid-template-areas: 'bg-left content bg-right';
+        gap: 0.625rem;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+        margin: 0 auto;
     }
 
     .hero .logo {
-        margin: 0 auto 8rem 0;
+        margin: 0 0 8rem 0;
     }
 
-    .hero .container::before {
-        content: '';
-        inset: 0;
-        position: absolute;
+    .hero__nav {
+        max-width: 69.375rem;
+        margin: 0 auto;
+    }
+
+    .hero__content {
+        margin: 0 0.625rem;
+        padding: 3.25rem 0 3.1875rem;
+    }
+
+    .bg-left {
         background-image: url('../assets/illustration-hero-left.svg');
         background-size: auto 356px;
         background-repeat: no-repeat;
         background-position: bottom left;
+        grid-area: bg-left;
         z-index: -1;
 
     }
 
 
-    .hero .container::after {
-        content: '';
-        inset: 0;
-        position: absolute;
+    .bg-right {
         background-image: url('../assets/illustration-hero-right.svg');
         background-size: auto 356px;
         background-repeat: no-repeat;
         background-position: bottom right;
+        grid-area: bg-right;
         z-index: -1;
 
     }
 
-    .hero__content {
-        max-width: 28.5625rem;
-        position: relative;
-        margin: 0 auto;
+    .hero__grid::before {
+        background-image: none;
+
     }
+
 
     .hero__content::before {
         content: '';
         inset: 0;
         position: absolute;
         background-image: url('../assets/bg-hero-squiggle.svg');
-        background-size: auto;
+        background-size: contain;
         background-repeat: no-repeat;
         background-position: center top;
         z-index: -1;
@@ -562,32 +585,31 @@ input[type='email'] {
 
     /* ### hero section ###  */
     .hero {
-        margin: 5.0625rem 2.5rem 12.625rem;
+        margin: 5.0625rem 0 12.625rem;
+        padding: 0 2.5rem;
     }
 
-    .hero .container::before {
-        content: '';
-        inset: 0;
-        position: absolute;
-        background-image: url('../assets/illustration-hero-left.svg');
-        background-size: auto 444px;
-        background-repeat: no-repeat;
-        background-position: bottom left;
-        z-index: -1;
+    .hero__grid {
+        display: grid;
+        max-width: 97.0625rem;
+        grid-template-columns: minmax(25.5rem, 1fr) minmax(33.75rem, 1fr) minmax(24.75rem, 1fr);
+        grid-template-rows: 28.6875rem;
+        grid-template-areas: 'bg-left content bg-right';
+        gap: 0 7.125rem;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .bg-left {
+        background-size: auto 459px;
 
     }
 
 
-    .hero .container::after {
-        content: '';
-        inset: 0;
-        position: absolute;
-        background-image: url('../assets/illustration-hero-right.svg');
+    .bg-right {
         background-size: auto 444px;
-        background-repeat: no-repeat;
-        background-position: bottom right;
-        z-index: -1;
-
     }
 
     .hero .logo {
@@ -595,8 +617,11 @@ input[type='email'] {
     }
 
     .hero__content {
-        max-width: 45.625rem;
-        padding: 5.5rem 5.625rem 4.8125rem 6.0625rem;
+        padding: 4.375rem 0 4.4375rem;
+    }
+
+    .hero__content p {
+        margin: 1.5rem 0 4rem;
     }
 
     /* ### features section ###  */
@@ -604,7 +629,7 @@ input[type='email'] {
     .features {
         grid-template-columns: repeat(auto-fit, minmax(min-content, 15.9375rem));
         grid-template-rows: 23.9375rem;
-        justify-content: center;
+        justify-content: space-between;
         align-content: center;
     }
 
@@ -615,13 +640,11 @@ input[type='email'] {
 
     }
 
-    .features .flex>* {
-        margin-left: 1.875rem;
-    }
-
     .features__img {
         width: 160px;
         height: 164px;
+        margin-left: 0;
+        margin-right: auto;
     }
 
     .features .features__img img,
@@ -635,6 +658,8 @@ input[type='email'] {
     .features .fs-heading-s {
         margin: 3rem 0 1.4375rem;
     }
+
+
 
     .left {
         margin-left: 0;
