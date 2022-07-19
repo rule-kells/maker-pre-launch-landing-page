@@ -695,15 +695,20 @@ input[type='email'] {
     /* ### footer section ###  */
 
     footer {
-        padding: 3.3125rem 0.8125rem;
+        padding: 3.3125rem 0.8125rem 2.625rem;
     }
 
     footer::before {
         background-image: url('../assets/bg-footer-squiggle.svg');
         background-size: contain;
+        background-position: center top;
     }
 
     /* ### form section ###  */
+
+    form {
+        margin-bottom: 7.3125rem;
+    }
 
     input[type='email'] {
         position: relative;
